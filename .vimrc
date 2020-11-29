@@ -35,7 +35,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 
-source ~/.config/nvim/coc_default.vim
+" source ~/.config/nvim/coc_default.vim
 
 " Tab indentions {{{
 set smartindent
