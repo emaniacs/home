@@ -104,6 +104,10 @@ autocmd BufReadPost *
 " Remember info about open buffers on close
 set viminfo^=%
 
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+autocmd FileType *.jade setlocal shiftwidth=2 tabstop=2
+autocmd FileType html setlocal shiftwidth=2 tabstop=2
+
 command W w !sudo tee % > /dev/null
 
 au BufRead,BufNewFile *.php set ft=php.html
