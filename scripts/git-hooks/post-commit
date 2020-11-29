@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+
+# generate ctags file
+ctags -R .
