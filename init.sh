@@ -56,6 +56,11 @@ init_i3wm() {
     echo 'ok'
 }
 
+init_git() {
+    # initialize global hooks
+    # https://stackoverflow.com/a/37293198
+    git config --global core.hooksPath "$SCRIPTDIR/scripts/git-hooks/"
+}
 
 case $1 in 
     alls)
@@ -66,6 +71,9 @@ case $1 in
         ;;
     vi|vim|nvim)
         init_vi
+        ;;
+    git)
+        init_git
         ;;
     *)
         usage
