@@ -25,7 +25,7 @@ EOF
 init_all() {
     init_input
     init_ctags
-    init_vim
+    init_vi
     init_screenrc
 }
 
