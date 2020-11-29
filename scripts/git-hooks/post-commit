@@ -2,4 +2,5 @@
 
 
 # generate ctags file
-ctags -R .
+CTAGS=$(which ctags)
+test -n "$CTAGS" && $CTAGS -R .
