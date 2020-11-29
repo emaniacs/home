@@ -45,6 +45,7 @@ init_screenrc() {
 
 init_vi() {
     mkdir -vp "$HOME/.vim/tmp/{backup,yank,undo}"
+    mkdir -vp "$HOME/.config/nvim"
     ln -vs "$SCRIPTDIR/.vimrc" "$HOME/.vimrc"
     ln -vs "$SCRIPTDIR/.vimrc" "$HOME/.config/nvim/init.vim"
 }
