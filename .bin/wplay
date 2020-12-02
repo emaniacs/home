@@ -1,0 +1,22 @@
+#!/usr/bin/bash
+
+## This script will play audio play recursively
+
+AUDIO_FILE='/home/ardi/Music/work/NoisesDotOnline_FileRequest#1604892869611.wav'
+
+PIDFILE=/tmp/wplay.pid
+
+# stop
+if [[ -f $PIDFILE ]] ; then
+    # kill all process and the childs
+    # kill -SIGTERM -- -`cat $PIDFILE`
+    kill `cat $PIDFILE`
+    pkill aplay
+else
+    echo $$ | tee $PIDFILE
+    while [ 1 ] ; do
+        aplay "$AUDIO_FILE"
+    done
+fi
+
+rm -v $PIDFILE
