@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+
+
+## capture screenshoot using rofi menu
+## dependencies:
+##  - rofi
+##  - scrot
+
+
+show_menu() {
+    echo 'Screenshoot selection'
+    echo 'Screenshoot selection timeout (5s)'
+    echo 'Screenshoot'
+    echo 'Screenshoot timeout (5s)'
+}
+
+main() {
+    # create directory
+    OUTPUT_DIR=${HOME}/screenshoot
+    oldpwd=$(pwd)
+    mkdir -p ${OUTPUT_DIR}
+    cd ${OUTPUT_DIR}
+
+    choice=$(show_menu | rofi -dmenu -i -fuzzy -p "scrot ($OUTPUT_DIR)")
+
+    echo "$choice"
+
+    case "$choice" in
+        'Screenshoot selection')
+            scrot -s -e 'notify-send "Saved \$(pwd)/$f"'
+            ;;
+        'Screenshoot selection timeout (5s)')
+            notify-send 'running scrot -s -d 5'
+            scrot -s -d 5s -e 'notify-send "Saved \$(pwd)/$f"'
+            ;;
+        'Screenshoot')
+            scrot -e 'notify-send "Saved \$(pwd)/$f"'
+            ;;
+        'Screenshoot timeout (5s)')
+            notify-send 'running scrot -d 5'
+            scrot -d 5 -e 'notify-send "Saved \$(pwd)/$f"'
+            ;;
+        *)
+            ;;
+    esac
+
+    cd ${oldpwd}
+}
+
+
+main
