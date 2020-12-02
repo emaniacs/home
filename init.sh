@@ -50,7 +50,9 @@ init_vi() {
 }
 
 init_i3wm() {
-    echo 'ok'
+    mkdir -vp "$HOME/.config/i3/"
+    ln -vs "$SCRIPTDIR/.config/i3/config" "$HOME/.config/i3/config"
+    ln -vs "$SCRIPTDIR/.i3status.conf" "$HOME/.i3status.conf"
 }
 
 
@@ -63,6 +65,9 @@ case $1 in
         ;;
     vi|vim|nvim)
         init_vi
+        ;;
+    i3|i3wm)
+        init_i3wm
         ;;
     *)
         usage
