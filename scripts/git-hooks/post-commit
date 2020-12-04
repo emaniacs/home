@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+
+# generate ctags file
+CTAGS=$(which ctags)
+test -n "$CTAGS" && $CTAGS -R .

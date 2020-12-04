@@ -25,7 +25,7 @@ EOF
 init_all() {
     init_input
     init_ctags
-    init_vim
+    init_vi
     init_screenrc
 }
 
@@ -44,7 +44,10 @@ init_screenrc() {
 }
 
 init_vi() {
-    mkdir -vp "$HOME/.vim/tmp/{backup,yank,undo}"
+    mkdir -vp "$HOME/.vim/tmp/backup"
+    mkdir -vp "$HOME/.vim/tmp/yank"
+    mkdir -vp "$HOME/.vim/tmp/undo"
+    mkdir -vp "$HOME/.config/nvim"
     ln -vs "$SCRIPTDIR/.vimrc" "$HOME/.vimrc"
     ln -vs "$SCRIPTDIR/.vimrc" "$HOME/.config/nvim/init.vim"
 }
@@ -55,6 +58,11 @@ init_i3wm() {
     ln -vs "$SCRIPTDIR/.i3status.conf" "$HOME/.i3status.conf"
 }
 
+init_git() {
+    # initialize global hooks
+    # https://stackoverflow.com/a/37293198
+    git config --global core.hooksPath "$SCRIPTDIR/scripts/git-hooks/"
+}
 
 case $1 in 
     alls)
@@ -68,6 +76,9 @@ case $1 in
         ;;
     i3|i3wm)
         init_i3wm
+        ;;
+    git)
+        init_git
         ;;
     *)
         usage

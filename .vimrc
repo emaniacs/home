@@ -35,7 +35,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 
-source ~/.config/nvim/coc_default.vim
+" source ~/.config/nvim/coc_default.vim
 
 " Tab indentions {{{
 set smartindent
@@ -103,6 +103,10 @@ autocmd BufReadPost *
             \ endif
 " Remember info about open buffers on close
 set viminfo^=%
+
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+autocmd FileType *.jade setlocal shiftwidth=2 tabstop=2
+autocmd FileType html setlocal shiftwidth=2 tabstop=2
 
 command W w !sudo tee % > /dev/null
 
