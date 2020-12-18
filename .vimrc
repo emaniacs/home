@@ -376,6 +376,8 @@ nmap <F8> :TagbarToggle<CR>
 " tree view by default
 let g:netrw_liststyle = 3
 
+vnoremap <C-C> :w !xsel -i -b<CR><CR>
+noremap <C-V> :r !xsel -o -b<CR><CR>
 " copy file
 
 "
