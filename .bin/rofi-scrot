@@ -1,17 +1,15 @@
 #!/usr/bin/env bash
 
-
-## capture screenshoot using rofi menu
-## dependencies:
-##  - rofi
-##  - scrot
-
-
 show_menu() {
     echo 'Screenshoot selection'
     echo 'Screenshoot selection timeout (5s)'
     echo 'Screenshoot'
     echo 'Screenshoot timeout (5s)'
+}
+
+copy_to_clipboard() {
+    echo xclip -selection clipboard -t image/png -i "$1"
+    xclip -selection clipboard -t image/png -i "$1"
 }
 
 main() {
@@ -27,18 +25,26 @@ main() {
 
     case "$choice" in
         'Screenshoot selection')
-            scrot -s -e 'notify-send "Saved \$(pwd)/$f"'
+            output=$(scrot -ps -e 'echo "\$(pwd)/$f"')
+            notify-send "Saved $output"
+            copy_to_clipboard "$output"
             ;;
         'Screenshoot selection timeout (5s)')
             notify-send 'running scrot -s -d 5'
-            scrot -s -d 5s -e 'notify-send "Saved \$(pwd)/$f"'
+            output=$(scrot -ps -d 5s -e 'echo "\$(pwd)/$f"')
+            notify-send "Saved \$(pwd)/$f"
+            copy_to_clipboard "$output"
             ;;
         'Screenshoot')
-            scrot -e 'notify-send "Saved \$(pwd)/$f"'
+            output=$(scrot -e 'echo "\$(pwd)/$f"')
+            notify-send "Saved \$(pwd)/$f"
+            copy_to_clipboard "$output"
             ;;
         'Screenshoot timeout (5s)')
             notify-send 'running scrot -d 5'
-            scrot -d 5 -e 'notify-send "Saved \$(pwd)/$f"'
+            output=$(scrot -d 5 -e 'echo "\$(pwd)/$f"')
+            notify-send "Saved \$(pwd)/$f"
+            copy_to_clipboard "$output"
             ;;
         *)
             ;;
