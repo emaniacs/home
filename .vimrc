@@ -338,7 +338,7 @@ let g:ale_fixers = {
             \ 'php': ['phpcbf'],
             \}
 let g:ale_linters = {
-            \ 'python': ['pylint'],
+            \ 'python': ['flake8'],
             \ 'go': ['gofmt', 'golint', 'go build'],
             \ 'javascript': ['eslint'],
             \ 'elm': ['elm-make'],
