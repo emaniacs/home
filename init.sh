@@ -64,6 +64,15 @@ init_git() {
     git config --global core.hooksPath "$SCRIPTDIR/scripts/git-hooks/"
 }
 
+init_qterminal() {
+    # https://superuser.com/a/1128905
+    which qterminal || (echo 'Qterminal not found' ; exit 255)
+    mkdir -pv ~/.config/systemd/user
+    ln -vs "$SCRIPTDIR/.config/systemd/user/qterminal.service" "$HOME/.config/systemd/user/" && \
+        systemctl --user enable qterminal && \
+        systemctl --user start qterminal
+}
+
 case $1 in 
     alls)
         init_all
@@ -79,6 +88,9 @@ case $1 in
         ;;
     git)
         init_git
+        ;;
+    qterminal)
+        init_qterminal
         ;;
     *)
         usage

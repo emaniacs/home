@@ -1,0 +1,17 @@
+[Unit]
+Description=Qterminal dropdownmode
+Documentation=
+PartOf=graphical-session.target
+BindsTo=graphical-session.target
+Wants=graphical-session.target
+After=graphical-session.target
+
+[Service]
+#Type=dbus
+#BusName=org.freedesktop.Notifications
+ExecStart=/usr/bin/qterminal -d
+Restart=always
+
+[Install]
+#WantedBy=xsession.target
+WantedBy=graphical-session.target
