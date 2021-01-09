@@ -84,6 +84,8 @@ bindsym $mod+Shift+d exec --no-startup-id "rofi -show run -run-shell-command '{t
 
 # bindsym $mod+space exec "rofi -lines 7 -padding 18 -width 60 -location 0 -show combi -combi-modi window,drun,run -modi combi -columns 3 -font 'Noto Sans 8'"
 bindsym Print exec "~/.bin/rofi-scrot"
+bindsym ctrl+shift+b exec "~/.bin/hef"
+
 # bindsym F9 exec "/usr/bin/xsel --clipboard | tee /tmp/cliptrans | ~/.bin/cliptrans en:id"
 bindsym F9 exec "/usr/bin/bash ~/.bin/cliptrans en:id"
 bindsym ctrl+F9 exec "/usr/bin/bash ~/.bin/cliptrans id:en"
@@ -250,6 +252,7 @@ mode "resize" {
 workspace_layout tabbed
 
 bindsym $mod+r mode "resize"
+
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)

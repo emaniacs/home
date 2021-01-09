@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+CHEATSHEET_DIR=$HOME/Downloads/cheatsheet
+
+show_menu() {
+    ls $CHEATSHEET_DIR
+}
+
+main() {
+    # choice=$(show_menu | rofi -dmenu -i -fuzzy -p)
+    choice=$(show_menu | rofi -dmenu -i -fuzzy)
+
+    feh --bg-center "$CHEATSHEET_DIR/$choice"
+}
+
+
+main
