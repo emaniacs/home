@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+
+hash=$(git --no-pager blame -c -L "$2",+1 -- "$1" | awk '{print $1}')
+
+git --no-pager show "$hash" --format='%h %an | %ar | %s' --quiet
