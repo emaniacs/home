@@ -370,6 +370,16 @@ colorscheme dracula
 
 command! -nargs=* T :split | terminal <args>
 command! -nargs=* VT :vsplit | terminal <args>
+command! -complete=file -nargs=* GLens :echo system('gitlens '. <q-args>)
+function! GitLens()
+    let linenumber = line(".")
+    " echo @% . ":" . linenumber
+    execute ":GLens % " . linenumber
+endfunction
+nmap <F7> :call GitLens()<CR>
+
+
+command! -nargs=* VT :vsplit | terminal <args>
 
 nmap <F8> :TagbarToggle<CR>
 
