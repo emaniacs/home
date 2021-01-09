@@ -1,8 +1,6 @@
 #!/usr/bin/bash
 
-## This script will play audio play recursively
-
-AUDIO_FILE='/home/ardi/Music/work/NoisesDotOnline_FileRequest#1604892869611.wav'
+# while [ 1 ] ; do aplay file.wav ; done
 
 PIDFILE=/tmp/wplay.pid
 
@@ -15,7 +13,7 @@ if [[ -f $PIDFILE ]] ; then
 else
     echo $$ | tee $PIDFILE
     while [ 1 ] ; do
-        aplay "$AUDIO_FILE"
+        aplay '/home/ardi/Music/work/NoisesDotOnline_FileRequest#1604892869611.wav'
     done
 fi
 
