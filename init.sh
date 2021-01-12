@@ -22,6 +22,12 @@ usage() {
 EOF
 }
 
+init_apps() {
+    # install some packages
+    # trans git
+    echo "complete this to install some apps ;)"
+}
+
 init_all() {
     init_input
     init_ctags
@@ -82,6 +88,9 @@ case $1 in
         ;;
     ctags)
         init_ctags
+        ;;
+    apps)
+        init_apps
         ;;
     inputrc|editrc)
         init_input
