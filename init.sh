@@ -36,6 +36,9 @@ init_input() {
 
 init_ctags() {
     ln -v -s "$SCRIPTDIR/.ctags" "$HOME/.ctags"
+    # support universal ctags
+    mkdir "$HOME"/.ctags.d/""
+    ln -v -s "$SCRIPTDIR/universal.ctags" "$HOME/.ctags.d/"
 }
 
 init_screenrc() {
@@ -76,6 +79,9 @@ init_qterminal() {
 case $1 in 
     alls)
         init_all
+        ;;
+    ctags)
+        init_ctags
         ;;
     inputrc|editrc)
         init_input

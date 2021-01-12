@@ -1,0 +1,21 @@
+--recurse=yes
+--tag-relative=yes
+--exclude=.git
+--exclude=logs
+--exclude=storage/*
+--exclude=public/*
+--exclude=node_modules/*
+--exclude=static/*
+--exclude=resources/*
+--exclude=apidoc/*
+--exclude=vendor/*
+--exclude=*.min.*
+--exclude=.nodeenv/*
+
+--langmap=php:+.inc
+--php-kinds=cfd
+--regex-PHP=/abstract\s+class\s+([^ ]+)/\1/c/
+--regex-PHP=/interface\s+([^ ]+)/\1/c/
+--regex-PHP=/(public\s+|static\s+|protected\s+|private\s+)\$([^     =]+)/\2/p/
+--regex-PHP=/const\s+([^    =]+)/\1/d/
+--regex-PHP=/final\s+(public\s+|static\s+|abstract\s+|protected\s+|private\s+)function\s+\&?\s*([^ (]+)/\2/f/
