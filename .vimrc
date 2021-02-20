@@ -25,17 +25,25 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-dispatch'
 Plug 'emaniacs/vim-rest-console'
 Plug 'airblade/vim-gitgutter'
+Plug 'rhysd/git-messenger.vim'
+Plug 'vim-test/vim-test'
 Plug 'elixir-editors/vim-elixir'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'vim-scripts/AutoComplPop'
+
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'AndrewRadev/splitjoin.vim'
+" Plug 'dbeniamine/cheat.sh-vim'
+" Plug 'vim-vdebug/vdebug'
+" Plug 'jceb/vim-orgmode'
 
 
 call plug#end()
 
 
-" source ~/.config/nvim/coc_default.vim
 
 " Tab indentions {{{
 set smartindent
@@ -91,6 +99,8 @@ set showmatch
 
 " show completion with tab on command mode
 set wildmenu
+
+set shortmess+=c
 
 
 " Use hard tabs for make files
@@ -212,11 +222,6 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-
-map <F10> :NERDTreeToggle<CR>
-imap <F10> <ESC>:NERDTreeToggle<CR>
-map <S-F10> :NERDTree %<CR>
-
 imap <S-Up> <ESC>:winc +<cr><esc>i
 map <S-Up> :winc +<cr>
 imap <S-Down> <ESC>:winc -<cr><esc>i
@@ -284,8 +289,10 @@ noremap <leader>jh :History<cr>
 
 noremap <leader>C :!cp -v <C-r><C-f> <C-r><C-f>
 
-noremap <leader>gg :GitGutterToggle<cr>
-let g:gitgutter_enabled = 0
+" noremap <leader>gg :GitGutterToggle<cr>
+let g:gitgutter_enabled = 1
+let g:gitgutter_signs = 0
+noremap <leader>D :GitGutterNextHunk<cr> :GitGutterPreviewHunk<cr>
 " use gm for mark because m used by easyclip
 
 " }}}
@@ -333,7 +340,7 @@ set grepprg=rg\ --vimgrep
 
 let g:ale_fixers = {
             \ 'python': ['autopep8'],
-            \ 'javascript': ['prettier'],
+            \ 'javascript': ['eslint'],
             \ 'go': ['gofmt'],
             \ 'elm': ['elm-format'],
             \ 'json': ['prettier'],
@@ -361,6 +368,10 @@ let g:ale_php_phpstan_executable = 'vendor/bin/phpstan'
 let g:ale_php_phpstan_level = 1
 let g:ale_virtualenv_dir_names = ['.virtualenv', '.virtualenvosx', 'virtualenv']
 let g:ale_lint_on_text_changed = 'normal'
+" disable loclist and quickfix
+" sometimes we need to check manually result of vim-test
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 0
 " let g:ale_fix_on_save = 1
 "
 nmap <silent> <leader>E <Plug>(ale_previous_wrap)
@@ -389,8 +400,37 @@ nmap <F8> :TagbarToggle<CR>
 let g:netrw_liststyle = 3
 
 vnoremap <C-C> :w !xsel -i -b<CR><CR>
-noremap <C-V> :r !xsel -o -b<CR><CR>
+" noremap <C-V> :r !xsel -o -b<CR><CR>
 " copy file
+
+" https://github.com/junegunn/fzf.vim/issues/346#issuecomment-288483704
+" command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
+noremap <leader>R :Rg<cr>
+
+let g:git_messenger_close_on_cursor_moved = v:false
+
+let test#strategy = "dispatch"
+" let test#strategy = "vimproc"
+" let test#strategy = "vimterminal"
+" vimterminal
+noremap <leader>T :TestNearest<cr>
+noremap <leader>tf :TestFile<cr>
+noremap <leader>tl :TestLast<cr>
+noremap <leader>tv :TestVisit<cr>
+noremap <leader>tS :TestSuite<cr>
+
+function! GitStatus()
+    let branch = substitute(system("git branch --show-current"), "\n", " ", "g")
+    " if strlen(branch) == 0 then
+    "     return ""
+    " endif
+    " Show gitgutter at statusline instead of column
+    let [a,m,r] = GitGutterGetHunkSummary()
+    return printf('[%s | +%d ~%d -%d]', branch, a, m, r)
+endfunction
+
+set statusline=%<%n\ %f\ %h%m%r%=%-14.(%l,%c%V%)%{GitStatus()}
 
 "
 " vim:foldmethod=marker
