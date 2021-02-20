@@ -267,7 +267,8 @@ bindsym $mod+r mode "resize"
 bar {
     workspace_buttons yes
     position top
-    status_command i3status
+    # status_command i3status
+    status_command ~/.bin/e3stat
     # status_command exec ~/.bin/barista
     # status_command /usr/bin/i3blocks
     # font pango:DejaVu Sans Mono 9
