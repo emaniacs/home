@@ -166,10 +166,9 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/google-chrome; exec /usr/bin/slack'
+exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/brave-browser; exec /usr/bin/slack'
 # exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/slack'
 
-assign [class="Google-chrome"] $ws2
 assign [class="Slack"] $ws2
 # for_window [class="Google-chrome"] move to workspace $ws2
 # new_window 1pixel
