@@ -17,7 +17,7 @@ Plug 'w0rp/ale'
 Plug 'tpope/vim-sensible'
 "" this plugin replace c-i
 " Plug 'terryma/vim-multiple-cursors'
-Plug 'preservim/tagbar'
+" Plug 'preservim/tagbar'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
