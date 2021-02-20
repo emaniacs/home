@@ -68,8 +68,8 @@ bindsym XF86MonBrightnessDown exec "/home/ardi/.bin/brightness -50 | xargs notif
 floating_modifier $mod
 
 # start a terminal
-# bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+shift+Return exec i3-sensible-terminal
+bindsym $mod+Return exec /usr/local/bin/alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
