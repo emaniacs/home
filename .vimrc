@@ -419,18 +419,23 @@ noremap <leader>tf :TestFile<cr>
 noremap <leader>tl :TestLast<cr>
 noremap <leader>tv :TestVisit<cr>
 noremap <leader>tS :TestSuite<cr>
+noremap <leader>tq :cclose<cr>
 
-function! GitStatus()
-    let branch = substitute(system("git branch --show-current"), "\n", " ", "g")
+" function! GitStatus()
+    " let branch = fugitive#statusline()
+    " return printf('%s', branch)
+    " let branch = ''
+    " let branch = substitute(system("git branch --show-current"), "\n", " ", "g")
     " if strlen(branch) == 0 then
     "     return ""
     " endif
     " Show gitgutter at statusline instead of column
-    let [a,m,r] = GitGutterGetHunkSummary()
-    return printf('[%s | +%d ~%d -%d]', branch, a, m, r)
-endfunction
+    " let [a,m,r] = GitGutterGetHunkSummary()
+    " return printf('[%s | +%d ~%d -%d]', branch, a, m, r)
+" endfunction
 
-set statusline=%<%n\ %f\ %h%m%r%=%-14.(%l,%c%V%)%{GitStatus()}
-
+" set statusline=%<%n\ %f\ %h%m%r%=%-14.(%l,%c%V%)
+" set statusline+=%{fugitive#statusline()}
+set statusline=%<%n\ %f\ %h%m%r%=%-14.(%l,%c%V%)%{fugitive#statusline()}
 "
 " vim:foldmethod=marker
