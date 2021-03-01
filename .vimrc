@@ -33,6 +33,8 @@ Plug 'elixir-editors/vim-elixir'
 
 Plug 'ayu-theme/ayu-vim' " or other package manager
 " Plug 'vim-scripts/AutoComplPop'
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'AndrewRadev/splitjoin.vim'
 " Plug 'dbeniamine/cheat.sh-vim'
 " Plug 'vim-vdebug/vdebug'
