@@ -442,4 +442,8 @@ colorscheme ayu
 " set statusline+=%{fugitive#statusline()}
 set statusline=%<%n\ %f\ %h%m%r%=%-14.(%l,%c%V%)%{fugitive#statusline()}
 "
+" rebuild ctags
+noremap <leader>c :Dispatch ctags -R .<cr>
+
+
 " vim:foldmethod=marker
