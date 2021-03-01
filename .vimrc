@@ -1,9 +1,7 @@
 :call plug#begin('~/.vim/plugged')
 " gui
 Plug 'itchyny/vim-cursorword'
-Plug 'trevordmiller/nova-vim'
 Plug 'lfv89/vim-interestingwords'
-Plug 'dracula/vim', { 'as': 'dracula' }
 
 "" tools
 " Plug 'Valloric/YouCompleteMe'
@@ -32,9 +30,9 @@ Plug 'rhysd/git-messenger.vim'
 Plug 'vim-test/vim-test'
 Plug 'elixir-editors/vim-elixir'
 
-Plug 'vim-scripts/AutoComplPop'
 
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'ayu-theme/ayu-vim' " or other package manager
+" Plug 'vim-scripts/AutoComplPop'
 " Plug 'AndrewRadev/splitjoin.vim'
 " Plug 'dbeniamine/cheat.sh-vim'
 " Plug 'vim-vdebug/vdebug'
@@ -171,7 +169,6 @@ set guioptions-=l
 set guioptions-=L
 
 set t_Co=256
-colorscheme dracula
 
 " set cursorline
 " hi CursorLine guibg=Grey40
@@ -379,8 +376,6 @@ nmap <silent> <leader>e <Plug>(ale_next_wrap)
 
 noremap <leader>F :ALEFix<cr>
 
-colorscheme dracula
-
 command! -nargs=* T :split | terminal <args>
 command! -nargs=* VT :vsplit | terminal <args>
 command! -complete=file -nargs=* GLens :echo system('gitlens '. <q-args>)
@@ -420,6 +415,11 @@ noremap <leader>tl :TestLast<cr>
 noremap <leader>tv :TestVisit<cr>
 noremap <leader>tS :TestSuite<cr>
 noremap <leader>tq :cclose<cr>
+
+set termguicolors     " enable true colors support
+let ayucolor="mirage" " for mirage version of theme
+" let ayucolor="dark"   " for dark version of theme
+colorscheme ayu
 
 " function! GitStatus()
     " let branch = fugitive#statusline()
