@@ -268,6 +268,8 @@ map <leader>l :ls<cr>
 map <leader>q :wq!<cr>
 map <leader>, <c-w>w
 map <leader>G :Git<cr>
+map <leader>ga :Git add %<cr>
+map <leader>gc :Git commit -m ''<left>
 
 
 nmap <silent> <leader><cr> :set hlsearch!<cr>
