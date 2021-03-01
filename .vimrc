@@ -441,7 +441,10 @@ colorscheme ayu
 " set statusline=%<%n\ %f\ %h%m%r%=%-14.(%l,%c%V%)
 " set statusline+=%{fugitive#statusline()}
 set statusline=%<%n\ %f\ %h%m%r%=%-14.(%l,%c%V%)%{fugitive#statusline()}
-"
+" default the statusline when entering Vim
+hi statusline guibg=White ctermfg=8 guifg=DarkSlateGray ctermbg=15
+highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+
 " rebuild ctags
 noremap <leader>c :Dispatch ctags -R .<cr>
 
