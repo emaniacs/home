@@ -1,3 +1,20 @@
-*.swp
+# python
+*.pyc
+*.egg-info/
 
+# system
+*.logs
+*.lock
+*.db
+*.pid
+*~
+.DS_Store
+.*
+
+# directory
+# public/
+tmp/
+dist/
+
+# ctags default generated file
 tags
