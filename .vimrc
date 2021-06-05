@@ -88,6 +88,7 @@ set comments=sr:/*,mb:*,ex:*/
 set formatoptions+=r
 set foldmethod=marker
 set foldmarker={,}
+set nofoldenable
 " set foldlevelstart=10
 " fix error on backspace
 set backspace=eol,indent,start
