@@ -8,6 +8,7 @@ Plug 'lfv89/vim-interestingwords'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/gv.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'kurkale6ka/vim-pairs'
 Plug 'rhysd/clever-f.vim'
@@ -43,7 +44,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['javascript', 'go', 'pyt
 
 
 call plug#end()
-
 
 
 " Tab indentions {{{
@@ -145,7 +145,6 @@ au BufRead,BufNewFile todo.txt,*.task,*.tasks setl tabstop=2
 au BufRead,BufNewFile todo.txt,*.task,*.tasks setl shiftwidth=2
 au BufRead,BufNewFile todo.txt,*.task,*.tasks setl softtabstop=2
 au BufRead,BufNewFile todo.txt,*.task,*.tasks setl expandtab
-
 
 " backup and swap file
 set backupdir=~/.vim/tmp/backup//
@@ -401,6 +400,7 @@ nmap <F8> :TagbarToggle<CR>
 
 " tree view by default
 let g:netrw_liststyle = 3
+let g:netrw_keepdir=0
 
 vnoremap <C-C> :w !xsel -i -b<CR><CR>
 " noremap <C-V> :r !xsel -o -b<CR><CR>
@@ -451,6 +451,5 @@ highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE gui
 
 " rebuild ctags
 noremap <leader>c :Dispatch ctags -R .<cr>
-
 
 " vim:foldmethod=marker
