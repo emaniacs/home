@@ -346,6 +346,7 @@ let g:ale_fixers = {
             \ 'elm': ['elm-format'],
             \ 'json': ['prettier'],
             \ 'php': ['phpcbf'],
+            \ 'sh': ['shfmt'],
             \}
 let g:ale_linters = {
             \ 'python': ['flake8'],
