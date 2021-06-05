@@ -4,6 +4,10 @@ TRANS="$HOME/.bin/trans"
 
 test -x "$TRANS" || ( notify-send "$TRANS not executable" ; exit 255 )
 
-# text=$(xclip -in -selection clipboard -o | $TRANS --no-ansi "$1" 2>&1)
-text=$(xsel -o -b| $TRANS --no-ansi "$1" 2>&1)
-notify-send "$text"
+if [[ "$1" == "speak" ]]; then
+    xsel -o -b| $TRANS --no-ansi -no-translate -speak
+else
+    # text=$(xclip -in -selection clipboard -o | $TRANS --no-ansi "$1" 2>&1)
+    text=$(xsel -o -b| $TRANS --no-ansi "$1" 2>&1)
+    notify-send "$text"
+fi
