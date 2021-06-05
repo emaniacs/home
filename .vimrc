@@ -414,11 +414,11 @@ let test#strategy = "dispatch"
 " let test#strategy = "vimproc"
 " let test#strategy = "vimterminal"
 " vimterminal
-noremap <leader>T :TestNearest<cr>
-noremap <leader>tf :TestFile<cr>
-noremap <leader>tl :TestLast<cr>
-noremap <leader>tv :TestVisit<cr>
-noremap <leader>tS :TestSuite<cr>
+noremap <leader>T :TestNearest --verbose<cr>
+noremap <leader>tf :TestFile --verbose<cr>
+noremap <leader>tl :TestLast --verbose<cr>
+noremap <leader>tv :TestVisit --verbose<cr>
+noremap <leader>tS :TestSuite --verbose<cr>
 noremap <leader>tq :cclose<cr>
 
 set termguicolors     " enable true colors support
