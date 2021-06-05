@@ -34,7 +34,8 @@ Plug 'elixir-editors/vim-elixir'
 """ theme
 Plug 'haishanh/night-owl.vim'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['javascript', 'go', 'python']}
+" Plug 'neoclide/coc.nvim'
 " Plug 'AndrewRadev/splitjoin.vim'
 " Plug 'dbeniamine/cheat.sh-vim'
 " Plug 'vim-vdebug/vdebug'
@@ -119,6 +120,7 @@ au BufRead,BufNewFile *.md setlocal textwidth=80
 set viminfo^=%
 
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+autocmd FileType javascript source ~/.vim/coc-init.vim
 autocmd FileType *.jade setlocal shiftwidth=2 tabstop=2
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
 
