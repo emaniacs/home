@@ -106,6 +106,7 @@ set shortmess+=c
 
 " Use hard tabs for make files
 autocmd FileType make setlocal noexpandtab
+" autocmd FileType netrw noremap c :!cp <C-R><C-F> <C-R><C-F>
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
