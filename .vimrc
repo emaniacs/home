@@ -31,8 +31,8 @@ Plug 'vim-test/vim-test'
 Plug 'elixir-editors/vim-elixir'
 
 
-Plug 'ayu-theme/ayu-vim' " or other package manager
-" Plug 'vim-scripts/AutoComplPop'
+""" theme
+Plug 'haishanh/night-owl.vim'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'AndrewRadev/splitjoin.vim'
@@ -421,9 +421,7 @@ noremap <leader>tS :TestSuite<cr>
 noremap <leader>tq :cclose<cr>
 
 set termguicolors     " enable true colors support
-let ayucolor="mirage" " for mirage version of theme
-let ayucolor="dark"   " for dark version of theme
-colorscheme ayu
+colorscheme night-owl
 
 " function! GitStatus()
     " let branch = fugitive#statusline()
