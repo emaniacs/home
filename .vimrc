@@ -405,7 +405,8 @@ vnoremap <C-C> :w !xsel -i -b<CR><CR>
 " https://github.com/junegunn/fzf.vim/issues/346#issuecomment-288483704
 " command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
-noremap <leader>R :Rg<cr>
+nnoremap <silent> <leader>R :Rg <C-R><C-W><CR>
+" nnoremap <silent> <Leader>ag :Rg <C-R><C-W><CR>
 
 let g:git_messenger_close_on_cursor_moved = v:false
 
