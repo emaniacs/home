@@ -380,9 +380,8 @@ nmap <silent> <leader>E <Plug>(ale_previous_wrap)
 nmap <silent> <leader>e <Plug>(ale_next_wrap)
 
 noremap <leader>F :ALEFix<cr>
+nnoremap <leader>S :vert term<cr>
 
-command! -nargs=* T :split | terminal <args>
-command! -nargs=* VT :vsplit | terminal <args>
 command! -complete=file -nargs=* GLens :echo system('gitlens '. <q-args>)
 function! GitLens()
     let linenumber = line(".")
