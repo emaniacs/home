@@ -259,7 +259,7 @@ nnoremap N Nzz
 let mapleader = "\<Space>"
 let g:mapleader = "\<Space>"
 
-nmap <leader>w :w!<cr>
+nmap <leader>w :up<cr>
 map <leader>d :bdelete<cr>
 map <leader>n :bn<cr>
 map <leader>p :bp<cr>
