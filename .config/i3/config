@@ -70,6 +70,8 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+shift+Return exec i3-sensible-terminal
 bindsym $mod+Return exec /usr/local/bin/alacritty
+for_window [instance="__scratchpad"] move scratchpad
+exec --no-startup-id urxvt -name __scratchpad
 
 # kill focused window
 bindsym $mod+Shift+q kill
