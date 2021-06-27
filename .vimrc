@@ -368,7 +368,9 @@ let g:ale_linters = {
 " let g:ale_php_phpcbf_use_global = 1
 let g:ale_php_phpcbf_options = '--standard=PSR2 -n'
 
-let g:ale_php_phpcs_executable = 'phpcs'
+let g:ale_php_phpmd_executable = 'vendor/bin/phpmd'
+let g:ale_php_phpmd_ruleset = "phpmd.xml"
+let g:ale_php_phpcs_executable = 'vendor/bin/phpcs'
 let g:ale_php_phpcs_options = ''
 let g:ale_php_phpcs_standard = 'PSR2'
 let g:ale_php_phpcs_use_global = 0
