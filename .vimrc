@@ -30,6 +30,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'rhysd/git-messenger.vim'
 Plug 'vim-test/vim-test'
 Plug 'elixir-editors/vim-elixir'
+Plug 'dbeniamine/cheat.sh-vim'
+
 
 
 """ theme
@@ -448,6 +450,13 @@ set statusline=%<%n\ %f\ %h%m%r%=%-14.(%l,%c%V%)%{fugitive#statusline()}
 hi statusline guibg=White ctermfg=8 guifg=DarkSlateGray ctermbg=15
 hi statuslinenc guibg=#474747 ctermfg=8 guifg=black ctermbg=15
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+
+let g:CheatSheetFrameworks = {
+            \ 'python' : ['python', 'django', 'flask'],
+            \ 'javascript' : ['javascript', 'node', 'react'],
+            \ 'php' : ['php', 'laravel'],
+            \ 'php.html' : ['php'],
+            \}
 
 " rebuild ctags
 noremap <leader>c :Dispatch ctags -R .<cr>
