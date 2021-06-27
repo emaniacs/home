@@ -275,6 +275,8 @@ map <leader>, <c-w>w
 map <leader>G :Git<cr>
 map <leader>ga :Git add %<cr>
 map <leader>gc :Git commit -m ''<left>
+map <leader>gb :Git checkout 
+map <leader>gd :Git checkout develop<cr>
 
 
 nmap <silent> <leader><cr> :set hlsearch!<cr>
