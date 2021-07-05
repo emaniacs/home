@@ -464,5 +464,6 @@ let g:CheatSheetFrameworks = {
 
 " rebuild ctags
 noremap <leader>c :Dispatch ctags -R .<cr>
+noremap <leader>v :Dispatch ./vendor/bin/phpmd % text phpmd.xml<cr>
 
 " vim:foldmethod=marker
