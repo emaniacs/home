@@ -430,6 +430,7 @@ noremap <leader>tl :TestLast --verbose<cr>
 noremap <leader>tv :TestVisit --verbose<cr>
 noremap <leader>tS :TestSuite --verbose<cr>
 noremap <leader>tq :cclose<cr>
+noremap <leader><space>c :cclose<cr>
 
 set termguicolors     " enable true colors support
 colorscheme night-owl
