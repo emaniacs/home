@@ -34,10 +34,12 @@ Plug 'dbeniamine/cheat.sh-vim'
 
 
 
+
 """ theme
 Plug 'haishanh/night-owl.vim'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['javascript', 'go', 'python']}
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['javascript', 'go']}
+" Plug 'puremourning/vimspector'
 " Plug 'neoclide/coc.nvim'
 " Plug 'AndrewRadev/splitjoin.vim'
 " Plug 'dbeniamine/cheat.sh-vim'
@@ -387,6 +389,8 @@ let g:ale_set_quickfix = 0
 "
 nmap <silent> <leader>E <Plug>(ale_previous_wrap)
 nmap <silent> <leader>e <Plug>(ale_next_wrap)
+nmap <silent> <leader>fd :ALEGoToDefinition<cr>
+nmap <silent> <leader>fh :ALEHover<cr>
 
 noremap <leader>F :ALEFix<cr>
 nnoremap <leader>S :vert term<cr>
@@ -414,7 +418,7 @@ vnoremap <C-C> :w !xsel -i -b<CR><CR>
 
 " https://github.com/junegunn/fzf.vim/issues/346#issuecomment-288483704
 " command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
-command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
+" command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
 nnoremap <silent> <leader>R :Rg <C-R><C-W><CR>
 " nnoremap <silent> <Leader>ag :Rg <C-R><C-W><CR>
 
