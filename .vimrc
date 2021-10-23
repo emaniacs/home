@@ -394,6 +394,8 @@ nmap <silent> <leader>fh :ALEHover<cr>
 
 noremap <leader>F :ALEFix<cr>
 nnoremap <leader>S :vert term<cr>
+" tnoremap <silent> <A-d> <C-\><C-n>:bdel!<CR>
+tnoremap <silent> <A-d> <C-w>:bdel!<CR>
 
 command! -complete=file -nargs=* GLens :echo system('gitlens '. <q-args>)
 function! GitLens()
