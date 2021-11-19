@@ -301,11 +301,12 @@ noremap <leader>jh :History<cr>
 
 noremap <leader>C :!cp -v <C-r><C-f> <C-r><C-f>
 
-" noremap <leader>gg :GitGutterToggle<cr>
 let g:gitgutter_enabled = 1
-let g:gitgutter_signs = 0
-noremap <leader>D :GitGutterNextHunk<cr> :GitGutterPreviewHunk<cr>
-" use gm for mark because m used by easyclip
+let g:gitgutter_signs = 1
+
+noremap gn :GitGutterNextHunk<cr>
+noremap gN :GitGutterPrevHunk<cr>
+noremap gp :GitGutterPreviewHunk<cr>
 
 " }}}
 
