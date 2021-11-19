@@ -434,6 +434,9 @@ nnoremap <silent> <leader>R :Rg <C-R><C-W><CR>
 let g:git_messenger_close_on_cursor_moved = v:false
 
 let test#strategy = "dispatch"
+let test#php#phpunit#options = {
+            \ 'file':    '--testdox',
+\}
 " let test#strategy = "vimproc"
 " let test#strategy = "vimterminal"
 " vimterminal
