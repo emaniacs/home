@@ -1,4 +1,4 @@
-:call plug#begin('~/.vim/plugged')
+call plug#begin('~/.vim/plugged')
 " gui
 Plug 'itchyny/vim-cursorword'
 Plug 'lfv89/vim-interestingwords'
@@ -37,6 +37,8 @@ Plug 'dbeniamine/cheat.sh-vim'
 
 """ theme
 Plug 'haishanh/night-owl.vim'
+Plug 'folke/tokyonight.nvim'
+Plug 'savq/melange'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['javascript', 'go']}
 " Plug 'puremourning/vimspector'
