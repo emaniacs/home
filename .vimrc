@@ -396,8 +396,16 @@ let g:ale_set_quickfix = 0
 "
 nmap <silent> <leader>E <Plug>(ale_previous_wrap)
 nmap <silent> <leader>e <Plug>(ale_next_wrap)
-nmap <silent> <leader>fd :ALEGoToDefinition<cr>
-nmap <silent> <leader>fh :ALEHover<cr>
+nmap <silent> gd <Plug>(ale_go_to_definition)
+nmap <silent> gr <Plug>(ale_find_references)
+nmap <silent> gh <Plug>(ale_hover)
+
+" set omnifunc=ale#completion#OmniFunc
+" set omnifunc=ale#completion#OmniFunc
+" let g:ale_hover_to_floating_preview = 1
+" let g:ale_floating_preview = 1
+" let g:ale_set_balloons = 1
+" let g:ale_completion_enabled = 1
 
 noremap <leader>F :ALEFix<cr>
 nnoremap <leader>S :vert term<cr>
