@@ -72,10 +72,12 @@ bindsym XF86MonBrightnessDown exec "/home/ardi/.bin/brightness -50 | xargs notif
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+shift+Return exec i3-sensible-terminal
+bindsym $mod+shift+Return exec /usr/local/bin/kitty
 bindsym $mod+Return exec /usr/local/bin/alacritty
 for_window [instance="__scratchpad"] move scratchpad
 exec --no-startup-id urxvt -name __scratchpad
+
+for_window [instance="tpr"] move scratchpad
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -95,9 +97,11 @@ bindsym F9 exec "/usr/bin/bash ~/.bin/cliptrans en:id"
 bindsym ctrl+F9 exec "/usr/bin/bash ~/.bin/cliptrans id:en"
 bindsym $mod+F9 exec "/usr/bin/bash ~/.bin/cliptrans speak"
 bindsym Print exec "~/.bin/rofi-scrot"
+bindsym $mod+Print exec "/usr/bin/kolourpaint $(xclip -selection clipboard -o)"
 bindsym $mod+ctrl+b exec "~/.bin/hef"
 bindsym $mod+m exec "~/.bin/wplay"
 bindsym ctrl+$alt+Delete exec "watson stop ;systemctl suspend"
+# bindsym F1 exec ~/.bin/tpr
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
