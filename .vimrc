@@ -308,6 +308,10 @@ noremap gn :GitGutterNextHunk<cr>
 noremap gN :GitGutterPrevHunk<cr>
 noremap gp :GitGutterPreviewHunk<cr>
 
+" edit file in the current line event their dont exists
+" https://youtu.be/434tljD-5C8?t=704
+noremap gf :edit <cfile><cr>
+
 " }}}
 
 "
