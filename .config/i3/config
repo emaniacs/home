@@ -252,10 +252,6 @@ for_window [class="^.*"] border pixel 1
 default_border pixel 1
 
 
-# application focus shortcut
-bindsym $mod+$alt+s exec "i3-msg '[title=Slack] focus'"
-# bindsym $mod+Shift+d exec "i3-msg '[title=DBeaver] focus'"
-
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
