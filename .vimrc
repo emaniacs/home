@@ -129,6 +129,8 @@ autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType javascript source ~/.vim/coc-init.vim
 autocmd FileType *.jade setlocal shiftwidth=2 tabstop=2
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
+autocmd FileType php.html nmap <buffer> <Leader>D odie('DIE AT . '. __FILE__ . ':' . __LINE__);<esc>
+autocmd FileType php.html nmap <buffer> <Leader>V ovar_dump();<left><left>
 
 command W w !sudo tee % > /dev/null
 
