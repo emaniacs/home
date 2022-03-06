@@ -75,9 +75,10 @@ floating_modifier $mod
 bindsym $mod+shift+Return exec /usr/local/bin/kitty
 bindsym $mod+Return exec /usr/local/bin/alacritty
 for_window [instance="__scratchpad"] move scratchpad
-exec --no-startup-id urxvt -name __scratchpad
+# exec --no-startup-id urxvt -name __scratchpad
 
 for_window [instance="tpr"] move scratchpad
+for_window [instance="gist"] move scratchpad
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -89,6 +90,7 @@ bindsym $mod+Shift+q kill
 # bindsym $mod+d exec --no-startup-id "rofi -lines 12 -padding 18 -width 60 -location 0 -show combi -combi-modi window,drun,run -modi combi -columns 3 -font 'Noto Sans 8' -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s \\"'"
 bindsym $mod+d exec  "rofi -lines 12 -padding 18 -width 60 -location 0 -show combi -combi-modi window,drun,run -modi combi -columns 3 -font 'Noto Sans 8' -run--command 'zsh -i -c \\"{cmd}\\"'"
 bindsym $mod+Shift+d exec --no-startup-id "rofi -show run -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s\\"'"
+bindsym $mod+c exec --no-startup-id "rofi -show calc -modi calc -no-show-match -no-sort > /dev/null"
 
 # bindsym $mod+space exec "rofi -lines 7 -padding 18 -width 60 -location 0 -show combi -combi-modi window,drun,run -modi combi -columns 3 -font 'Noto Sans 8'"
 
@@ -145,9 +147,10 @@ bindsym $mod+v split h
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+# bindsym $mod+s layout stacking
+# bindsym $mod+w layout tabbed
+bindsym $mod+a layout toggle
+bindsym $mod+Shift+a layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -157,7 +160,7 @@ bindsym $mod+Ctrl+space focus mode_toggle
 
 
 # focus the parent container
-bindsym $mod+a focus parent
+#bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -244,6 +247,11 @@ bindsysm $mod+Ctrl+r [tiling workspace="__focused__"] move workspace "__reorder_
 
 bindsym $mod+x exec "~/.bin/lock.sh"
 bindsym $mod+z exec "~/Github/rofi-blocks/kamfred.sh"
+bindsym $mod+s exec "~/.bin/rofi-search 2>&1 | tee /tmp/wew.log"
+bindsym $mod+p exec /usr/bin/pcmanfm-qt
+# bindsym $mod+n exec "/usr/bin/xdotool key ctrl+Page_Up"
+# bindsym $mod+Shift+n exec "/usr/bin/xdotool key ctrl+Page_Down"
+
 # bindsym $mod+y exec "ytfzf -D"
 # bindsym $mod+Shift+y exec "ytfzf -D -m"
 
@@ -292,6 +300,8 @@ bindsym $mod+r mode "resize"
 #         # statusline #50fa7b
 #     }
 # }
+# color defines for zenburn styled i3
+client.focused          #FF0000 #285577 #FFFFFF #2E9EF4   #FF293F
 
 bar {
     workspace_buttons yes
@@ -312,6 +322,7 @@ tray_output primary
         statusline #B1B1B1
         focused_workspace #CECECE #CECECE #000000
         active_workspace #333333 #333333 #888888
+        # active_workspace #fdf6e3 #6c71c4 #fdf6e3
         inactive_workspace #CECECE #333333 #f1f1f1
         urgent_workspace #eb709b #eb709b #ffffff
 
