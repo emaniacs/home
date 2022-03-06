@@ -25,12 +25,13 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-dispatch'
-Plug 'emaniacs/vim-rest-console'
+" Plug 'emaniacs/vim-rest-console'
 Plug 'airblade/vim-gitgutter'
 Plug 'rhysd/git-messenger.vim'
 Plug 'vim-test/vim-test'
 Plug 'elixir-editors/vim-elixir'
-Plug 'dbeniamine/cheat.sh-vim'
+" Plug 'dbeniamine/cheat.sh-vim'
+" Plug 'vimwiki/vimwiki'
 
 
 
