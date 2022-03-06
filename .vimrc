@@ -285,6 +285,10 @@ map <leader>ga :Git add %<cr>
 map <leader>gc :Git commit -m ''<left>
 map <leader>gb :Git checkout 
 map <leader>gd :Git checkout develop<cr>
+map <leader>gl :Gclog %<cr>
+map <leader>gl :Gclog %<cr>
+map <leader>gp :!git pull origin $(git branch --show-current)<cr>
+map <leader>gP :!git push origin $(git branch --show-current)<cr>
 
 
 nmap <silent> <leader><cr> :set hlsearch!<cr>
