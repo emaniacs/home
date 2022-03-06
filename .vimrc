@@ -41,7 +41,8 @@ Plug 'haishanh/night-owl.vim'
 Plug 'folke/tokyonight.nvim'
 Plug 'savq/melange'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['javascript', 'go']}
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['javascript', 'go', 'typescriptreact']}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'puremourning/vimspector'
 " Plug 'neoclide/coc.nvim'
 " Plug 'AndrewRadev/splitjoin.vim'
