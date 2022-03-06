@@ -495,7 +495,8 @@ endfunction
 
 " set statusline=%<%n\ %f\ %h%m%r%=%-14.(%l,%c%V%)
 " set statusline+=%{fugitive#statusline()}
-set statusline=%<%n\ %f\ %h%m%r%=%-14.(%l,%c%V%)%{fugitive#statusline()}
+set statusline=%<%n\ %f\ %h%m%r%=%-14.(%l,%c%V%)%{LinterStatus()}\ %{fugitive#statusline()}
+" set statusline+=%{LinterStatus()}
 " default the statusline when entering Vim
 hi statusline guibg=White ctermfg=8 guifg=DarkSlateGray ctermbg=15
 hi statuslinenc guibg=#474747 ctermfg=8 guifg=black ctermbg=15
