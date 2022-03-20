@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+LAST_FILE=''
+SCROOT_LAST_FILE=/tmp/scroot_last_file
+
 show_menu() {
     echo 'Screenshoot selection'
     echo 'Screenshoot selection timeout (5s)'
@@ -12,7 +15,22 @@ copy_to_clipboard() {
     xclip -selection clipboard -t image/png -i "$1"
 }
 
+edit_clipboard() {
+    input_file=$(cat $SCROOT_LAST_FILE)
+    if [[ -f "$input_file" ]] ; then
+        # use xdg-open
+        /usr/bin/kolourpaint "$input_file"
+    fi
+}
+
 main() {
+    case "$1" in
+        e|edit)
+            edit_clipboard
+            exit
+            ;;
+    esac
+
     # create directory
     OUTPUT_DIR=${HOME}/screenshoot
     oldpwd=$(pwd)
@@ -25,33 +43,36 @@ main() {
 
     case "$choice" in
         'Screenshoot selection')
-            output=$(scrot -ps -e 'echo "\$(pwd)/$f"')
-            notify-send "Saved $output"
-            copy_to_clipboard "$output"
+            LAST_FILE=$(scrot -ps -d 0.5s -e 'echo "\$(pwd)/$f"')
+            notify-send "Saved $LAST_FILE"
+            copy_to_clipboard "$LAST_FILE"
             ;;
         'Screenshoot selection timeout (5s)')
             notify-send 'running scrot -s -d 5'
-            output=$(scrot -ps -d 5s -e 'echo "\$(pwd)/$f"')
-            notify-send "Saved \$(pwd)/$f"
-            copy_to_clipboard "$output"
+            LAST_FILE=$(scrot -ps -d 5s -e 'echo "\$(pwd)/$f"')
+            notify-send "Saved $LAST_FILE"
+            copy_to_clipboard "$LAST_FILE"
             ;;
         'Screenshoot')
-            output=$(scrot -e 'echo "\$(pwd)/$f"')
-            notify-send "Saved \$(pwd)/$f"
-            copy_to_clipboard "$output"
+            LAST_FILE=$(scrot -e 'echo "\$(pwd)/$f"')
+            notify-send "Saved $LAST_FILE"
+            copy_to_clipboard "$LAST_FILE"
             ;;
         'Screenshoot timeout (5s)')
             notify-send 'running scrot -d 5'
-            output=$(scrot -d 5 -e 'echo "\$(pwd)/$f"')
-            notify-send "Saved \$(pwd)/$f"
-            copy_to_clipboard "$output"
+            LAST_FILE=$(scrot -d 5 -e 'echo "\$(pwd)/$f"')
+            notify-send "Saved $LAST_FILE"
+            copy_to_clipboard "$LAST_FILE"
             ;;
         *)
+            # notify-send 'kosong'
             ;;
     esac
+
+    [[ "x$LAST_FILE" == "x" ]] || echo $LAST_FILE > $SCROOT_LAST_FILE
 
     cd ${oldpwd}
 }
 
 
-main
+main $*
