@@ -2,6 +2,7 @@
 
 LAST_FILE=''
 SCROOT_LAST_FILE=/tmp/scroot_last_file
+SCROOT_LAST_FILE_UPLOAD=/tmp/scroot_last_file_upload
 
 show_menu() {
     echo 'Screenshoot selection'
@@ -23,10 +24,30 @@ edit_clipboard() {
     fi
 }
 
+get_last_link() {
+    sed -rn 's/.*link":"([^"]+)".*$/\1/p' $SCROOT_LAST_FILE_UPLOAD
+}
+
+to_imgurl_clipboard() {
+    input_file=$(cat $SCROOT_LAST_FILE)
+    if [[ -f "$input_file" ]] ; then
+        # TODO: prevent same file upload
+        curl -q -X POST "https://api.imgur.com/3/upload" -F "image=@$input_file" -o $SCROOT_LAST_FILE_UPLOAD
+        # copy link to clipboar
+        imgurl_link=$(get_last_link)
+        echo $imgurl_link| xclip -sel c
+        notify-send "$imgurl_link"
+    fi
+}
+
 main() {
     case "$1" in
         e|edit)
             edit_clipboard
+            exit
+            ;;
+        u|upload)
+            to_imgurl_clipboard
             exit
             ;;
     esac
