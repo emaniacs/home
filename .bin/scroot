@@ -9,6 +9,9 @@ show_menu() {
     echo 'Screenshoot selection timeout (5s)'
     echo 'Screenshoot'
     echo 'Screenshoot timeout (5s)'
+    echo 'Copy last file to clipboard'
+    echo 'Copy last link to clipboard'
+    echo 'Upload last file to imgur'
 }
 
 copy_to_clipboard() {
@@ -84,6 +87,17 @@ main() {
             LAST_FILE=$(scrot -d 5 -e 'echo "\$(pwd)/$f"')
             notify-send "Saved $LAST_FILE"
             copy_to_clipboard "$LAST_FILE"
+            ;;
+        'Copy last file to clipboard')
+            input_file=$(cat $SCROOT_LAST_FILE)
+            mime=$(file -i $input_file | awk '{print $2}' | tr -d ';')
+            xclip -selection clipboard -t "$mime" -i "$input_file"
+            ;;
+        'Copy last link to clipboard')
+            get_last_link | xclip -sel c
+            ;;
+        'Upload last file to imgur')
+            to_imgurl_clipboard
             ;;
         *)
             # notify-send 'kosong'
