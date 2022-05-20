@@ -91,6 +91,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec  "rofi -lines 12 -padding 18 -width 60 -location 0 -show combi -combi-modi window,drun,run -modi combi -columns 3 -font 'Noto Sans 8' -run--command 'zsh -i -c \\"{cmd}\\"'"
 bindsym $mod+Shift+d exec --no-startup-id "rofi -show run -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s\\"'"
 bindsym $mod+c exec --no-startup-id "rofi -show calc -modi calc -no-show-match -no-sort > /dev/null"
+bindsym $mod+w exec  "rofi -show window -run window"
 
 # bindsym $mod+space exec "rofi -lines 7 -padding 18 -width 60 -location 0 -show combi -combi-modi window,drun,run -modi combi -columns 3 -font 'Noto Sans 8'"
 
