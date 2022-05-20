@@ -10,6 +10,7 @@ show_menu() {
     echo 'Screenshoot'
     echo 'Screenshoot timeout (5s)'
     echo 'Copy last file to clipboard'
+    echo 'Copy last file path to clipboard'
     echo 'Copy last link to clipboard'
     echo 'Upload last file to imgur'
 }
@@ -92,6 +93,9 @@ main() {
             input_file=$(cat $SCROOT_LAST_FILE)
             mime=$(file -i $input_file | awk '{print $2}' | tr -d ';')
             xclip -selection clipboard -t "$mime" -i "$input_file"
+            ;;
+        'Copy last file path to clipboard')
+            cat $SCROOT_LAST_FILE | xclip -sel c
             ;;
         'Copy last link to clipboard')
             get_last_link | xclip -sel c
