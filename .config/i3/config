@@ -182,6 +182,7 @@ exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/brave-browser; exec /usr
 # exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/slack'
 
 assign [class="Slack"] $ws2
+assign [class="DBeaver"] $ws1
 for_window [class="mpv"] resize set 640 480
 # for_window [class="Google-chrome"] move to workspace $ws2
 # new_window 1pixel
