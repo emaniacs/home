@@ -463,6 +463,7 @@ noremap <leader>tv :TestVisit --verbose<cr>
 noremap <leader>tS :TestSuite --verbose<cr>
 noremap <leader>tq :cclose<cr>
 noremap <leader><space>c :cclose<cr>
+noremap <leader>Q :qa!<cr>
 
 set termguicolors     " enable true colors support
 colorscheme night-owl
@@ -495,7 +496,11 @@ endfunction
 
 " set statusline=%<%n\ %f\ %h%m%r%=%-14.(%l,%c%V%)
 " set statusline+=%{fugitive#statusline()}
-set statusline=%<%n\ %f\ %h%m%r%=%-14.(%l,%c%V%)%{LinterStatus()}\ %{fugitive#statusline()}
+function! GitBranch()
+  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+" set statusline=%<%n\ %f\ %h%m%r%=%-14.(%l,%c%V%)%{LinterStatus()}\ %{fugitive#statusline()}
+set statusline=%<%n\ %f\ %h%m%r%=%-14.(%l,%c%V%)%{LinterStatus()}\ %{GitBranch()}
 " set statusline+=%{LinterStatus()}
 " default the statusline when entering Vim
 hi statusline guibg=White ctermfg=8 guifg=DarkSlateGray ctermbg=15
