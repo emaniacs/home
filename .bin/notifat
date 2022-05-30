@@ -1,0 +1,23 @@
+#!/usr/bin/bash
+
+## notify something at specific date
+## example:
+##
+## $ notifat 14:00 project miting
+## will send notify at 14 about "project miting"
+##
+## $ notifat 'now + 3 hours' project miting
+## will send notify 3 hours from now about "project miting"
+## more info see $ man at
+
+# the first argument is the date
+DATE=$1
+
+# shift first argument, we use that as date
+shift
+# take all argument
+MESSAGE=$*
+
+NOTIFY=$(which notify-send)
+
+echo ${NOTIFY} --urgency=critical "'NOTIF AT'"  "'${MESSAGE}'" | at "${DATE}"
