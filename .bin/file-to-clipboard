@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+## copy file to clipboard
+
+## usage: file-to-clipboard filename
+
+TARGET=$1
+if [[ ! -f "$TARGET" ]] ; then
+    echo "Invalid file"
+    exit 255
+fi
+
+# get full path
+TARGET=$(realpath $TARGET)
+MIME=$(file --mime-type "$TARGET" | awk '{print $2}')
+
+xclip -selection clipboard -t "$MIME" -i "$TARGET"
