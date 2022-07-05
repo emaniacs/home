@@ -99,6 +99,8 @@ bindsym $mod+space exec  "rofi -show window -run window"
 
 # bindsym $mod+space exec "rofi -lines 7 -padding 18 -width 60 -location 0 -show combi -combi-modi window,drun,run -modi combi -columns 3 -font 'Noto Sans 8'"
 
+bindsym F8 scratchpad show
+
 # bindsym F9 exec "/usr/bin/xsel --clipboard | tee /tmp/cliptrans | ~/.bin/cliptrans en:id"
 bindsym F9 exec "/usr/bin/bash ~/.bin/cliptrans en:id"
 bindsym ctrl+F9 exec "/usr/bin/bash ~/.bin/cliptrans id:en"
