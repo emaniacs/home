@@ -77,6 +77,9 @@ bindsym $mod+Return exec /usr/local/bin/alacritty
 for_window [instance="__scratchpad"] move scratchpad
 # exec --no-startup-id urxvt -name __scratchpad
 
+# custom run for pcmanfm
+for_window [instance="pcmanfm-scratchpad"] move scratchpad
+for_window [instance="pcmanfm-scratchpad"] scratchpad show
 for_window [instance="tpr"] move scratchpad
 for_window [instance="gist"] move scratchpad
 
@@ -253,8 +256,8 @@ bindsysm $mod+Ctrl+r [tiling workspace="__focused__"] move workspace "__reorder_
 bindsym $mod+x exec "~/.bin/lock.sh"
 bindsym $mod+z exec "~/Github/rofi-blocks/kamfred.sh"
 bindsym $mod+s exec "~/.bin/rofi-search 2>&1 | tee /tmp/wew.log"
-bindsym $mod+p exec /usr/bin/pcmanfm-qt
 bindsym $mod+$alt+j exec "./.bin/show-or-run Joplin /usr/local/bin/joplin"
+bindsym $mod+p exec "/usr/bin/pcmanfm-qt --geometry 100x100x+50+50 --name pcmanfm-scratchpad"
 # bindsym $mod+n exec "/usr/bin/xdotool key ctrl+Page_Up"
 # bindsym $mod+Shift+n exec "/usr/bin/xdotool key ctrl+Page_Down"
 
