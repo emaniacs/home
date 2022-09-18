@@ -244,7 +244,7 @@ bindsym $mod+Shift+minus move scratchpad
 # focus the app
 bindsym $mod+Shift+s [title=Slack] focus
 bindsym $mod+Shift+w [title=WhatsApp] focus
-bindsym $mod+Shift+P [title=Postman] focus
+# bindsym $mod+Shift+P [title=Postman] focus
 
 # Show the first scratchpad window
 bindsym $mod+minus scratchpad show
