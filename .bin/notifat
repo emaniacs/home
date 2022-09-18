@@ -20,4 +20,7 @@ MESSAGE=$*
 
 NOTIFY=$(which notify-send)
 
-echo ${NOTIFY} --urgency=critical "'NOTIF AT'"  "'${MESSAGE}'" | at "${DATE}"
+TELBOT=$(which telbot)
+TELLBOT=$(test -x $TELBOT && echo "$TELBOT $MESSAGE" || 'true')
+
+echo ${NOTIFY} --urgency=critical "'NOTIF AT'"  "'${MESSAGE}'" \&\& $TELLBOT | at "${DATE}"
