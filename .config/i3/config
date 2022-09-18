@@ -260,11 +260,11 @@ bindsysm $mod+Ctrl+r [tiling workspace="__focused__"] move workspace "__reorder_
 
 bindsym $mod+Shift+m exec "~/.bin/mpvhistory"
 bindsym $mod+x exec "~/.bin/lock.sh"
-bindsym $mod+z exec "~/Github/rofi-blocks/kamfred.sh"
 bindsym $mod+s exec "~/.bin/rofi-search 2>&1 | tee /tmp/wew.log"
 bindsym $mod+p exec "/usr/bin/pcmanfm-qt --geometry 100x100x+50+50 --name pcmanfm-scratchpad"
 bindsym $mod+$alt+j exec "~/.bin/show-or-run Joplin /usr/local/bin/Joplin"
 bindsym $mod+Shift+d exec "~/.bin/monitor rofi"
+bindsym $mod+z exec "~/.bin/ropi rofi"
 # bindsym $mod+n exec "/usr/bin/xdotool key ctrl+Page_Up"
 # bindsym $mod+Shift+n exec "/usr/bin/xdotool key ctrl+Page_Down"
 
