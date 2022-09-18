@@ -258,6 +258,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 bindsysm $mod+Ctrl+r [tiling workspace="__focused__"] move workspace "__reorder__"; [workspace="__reorder__"] move workspace current
 
+bindsym $mod+Shift+m exec "~/.bin/mpvhistory"
 bindsym $mod+x exec "~/.bin/lock.sh"
 bindsym $mod+z exec "~/Github/rofi-blocks/kamfred.sh"
 bindsym $mod+s exec "~/.bin/rofi-search 2>&1 | tee /tmp/wew.log"
