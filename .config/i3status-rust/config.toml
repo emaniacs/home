@@ -1,0 +1,85 @@
+theme = "slick"
+icons = "awesome"
+
+[[block]]
+block = "net"
+format = "{signal_strength} {speed_down}"
+interval = 5
+use_bits = false
+hide_missing = true
+hide_inactive = true
+
+[[block]]
+block = "hueshift"
+hue_shifter = "redshift"
+step = 50
+click_temp = 3500
+
+[[block]]
+block = "battery"
+interval = 10
+
+[[block]]
+block = "uptime"
+
+# [[block]]
+# block = "disk_space"
+# path = "/"
+# alias = "/"
+# info_type = "available"
+# unit = "GB"
+# interval = 20
+# warning = 20.0
+# alert = 10.0
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{MAg}G"
+#format_mem = "{Mup}%"
+#format_swap = "{SUp}%"
+
+[[block]]
+block = "cpu"
+interval = 1
+format = "{utilization}% {frequency}GHz"
+warning = 80
+
+[[block]]
+block = "load"
+interval = 1
+format = "{1m}"
+
+[[block]]
+block = "sound"
+step_width = 3
+
+[[block]]
+block = "time"
+interval = 60
+format = "%a %d/%m %R %p"
+
+[[block]]
+block = "github"
+format = "{author}|{comment}|{mention}|{review_requested} |{total}"
+
+[[block]]
+block = "pomodoro"
+length = 25
+break_length = 5
+message = "Take a break!"
+break_message = "Back to work!"
+use_nag = true
+nag_path = "i3-nagbar"
+
+[[block]]
+block = "watson"
+state_path = "/home/ardi/.config/watson/state"
+
+# [[block]]
+# block = "toggle"
+# text = "watson"
+# command_state = "/home/ardi/.local/bin/watson status | grep No"
+# command_on = "/home/ardi/.local/bin/watson stop"
+# command_off = "true"
+# interval = 5
