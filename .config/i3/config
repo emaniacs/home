@@ -263,6 +263,8 @@ bindsym $mod+x exec "~/.bin/lock.sh"
 bindsym $mod+s exec "~/.bin/rofi-search 2>&1 | tee /tmp/wew.log"
 bindsym $mod+p exec "/usr/bin/pcmanfm-qt --geometry 100x100x+50+50 --name pcmanfm-scratchpad"
 bindsym $mod+$alt+j exec "~/.bin/show-or-run Joplin /usr/local/bin/Joplin"
+
+bindsym $alt+shift+k exec "~/.bin/i3-shortcut"
 bindsym $mod+Shift+d exec "~/.bin/monitor rofi"
 bindsym $mod+z exec "~/.bin/ropi rofi"
 # bindsym $mod+n exec "/usr/bin/xdotool key ctrl+Page_Up"
