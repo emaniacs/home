@@ -11,6 +11,7 @@
 --exclude=vendor/*
 --exclude=*.min.*
 --exclude=.nodeenv/*
+--exclude=.virtualenv/*
 
 --langmap=php:+.inc
 --php-kinds=cfd
