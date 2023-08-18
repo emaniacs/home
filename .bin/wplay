@@ -1,20 +1,80 @@
 #!/usr/bin/bash
 
+
+SOUND_DIRECTORY="$HOME/Sound/"
+NAME="wplay"
+LOOP=0
+OPTIONS=
+
+
 # while [ 1 ] ; do aplay file.wav ; done
+#
+# mpv https://radioislamindonesia.com/rodja-bandung.mp3
+#
 
-PIDFILE=/tmp/wplay.pid
 
-# stop
-if [[ -f $PIDFILE ]] ; then
-    # kill all process and the childs
-    # kill -SIGTERM -- -`cat $PIDFILE`
-    kill `cat $PIDFILE`
-    pkill aplay
-else
-    echo $$ | tee $PIDFILE
-    while [ 1 ] ; do
-        aplay '/home/ardi/Music/work/NoisesDotOnline_FileRequest#1604892869611.wav'
-    done
-fi
 
-rm -v $PIDFILE
+show_menu() {
+    cat <<EOF
+https://radioislamindonesia.com/rodja.mp3
+https://stream.radiojar.com/ycff5hcs92quv
+https://mediaserviceslive.akamaized.net/hls/live/2038266/ramulti/masterhq.m3u8
+$(find "$SOUND_DIRECTORY" -type f | sort -n)
+stop
+EOF
+}
+
+stop() {
+    PID=$(ps aux|grep "$NAME" | grep mpv| awk '{print $2}' | tr '\n' ' ')
+    ps aux|grep "$NAME" | grep mpv| awk '{print $2}' | xargs kill -9
+    # test -n "$PID" && kill -9 "$PID"
+}
+
+start() {
+    case "$1" in
+        stop)
+            stop
+        ;;
+        pause)
+            stop
+        ;;
+        http*)
+            mpv "$1" -- wplay | tee /tmp/wplay.log
+        ;;
+        "")
+            echo "Kosong"
+        ;;
+        *)
+            stop
+            if [[ $LOOP -eq 10 ]]; then
+                OPTIONS="$OPTIONS --loop"
+            fi
+
+            echo "LOOP: $LOOP"
+            if [[ -f "$1" ]]; then
+                notify-send -u low "Play file -> $OPTIONS: $1"
+                mpv $OPTIONS "$1" -- wplay | tee /tmp/wplay.log
+            else
+                notify-send -u low "Play by keyword -> $OPTIONS: $1"
+                find "$SOUND_DIRECTORY" -type f | rg -i "$1" | mpv $OPTIONS --playlist=- -- wplay | tee /tmp/wplay.log
+            fi
+            # yt-dlp "$1" -o - | mpv - -force-seekable=yes
+            notify-send -u low "Wplay stopped"
+        ;;
+    esac
+}
+
+main() {
+    case "$1" in
+        ""|rofi)
+            choice=$(show_menu| rofi -kb-custom-1 'Alt+Return' -dmenu -matching fuzzy -no-config -theme-str 'element { highlight: none; }' -p "mpv: ")
+            LOOP=$?
+            start "$choice"
+            ;;
+        *)
+            start "$@"
+            ;;
+    esac
+}
+
+main "$*"

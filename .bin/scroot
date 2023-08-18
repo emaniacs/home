@@ -13,6 +13,8 @@ show_menu() {
     echo 'Copy last file path to clipboard'
     echo 'Copy last link to clipboard'
     echo 'Upload last file to imgur'
+    echo 'Flameshoot'
+    echo 'Flameshoot delay 5s'
 }
 
 copy_to_clipboard() {
@@ -67,6 +69,12 @@ main() {
     echo "$choice"
 
     case "$choice" in
+        'Flameshoot')
+            flameshot gui -d 100
+            ;;
+        'Flameshoot delay 5s')
+            flameshot gui -d 5000
+            ;;
         'Screenshoot selection')
             LAST_FILE=$(scrot -ps -d 0.5s -e 'echo "\$(pwd)/$f"')
             notify-send "Saved $LAST_FILE"

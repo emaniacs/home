@@ -11,8 +11,8 @@ if [[ ! -f "$TARGET" ]] ; then
 fi
 
 # get full path
-TARGET=$(realpath $TARGET)
-MIME=$(file --mime-type "$TARGET" | awk '{print $2}')
+TARGET=$(realpath "$TARGET")
+MIME=$(file --mime-type "$TARGET" | awk -F: '{print $2}')
 
 echo "-$TARGET- -$MIME-"
 
