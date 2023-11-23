@@ -63,6 +63,9 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym $mod+greater move workspace to output right
 bindsym $mod+less move workspace to output left
 
+# kill window using middle click
+bindsym button2 kill
+
 # https://askubuntu.com/a/871207
 # https://askubuntu.com/a/469040
 bindsym XF86MonBrightnessUp exec "/home/ardi/.bin/brightness 50 | xargs notify-send -h string:x-canonical-private-synchronous:anything"
