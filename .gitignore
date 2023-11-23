@@ -9,6 +9,7 @@
 *.pid
 *~
 .DS_Store
+.*
 
 # directory
 # public/
