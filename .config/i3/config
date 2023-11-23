@@ -75,21 +75,29 @@ bindsym XF86MonBrightnessDown exec "/home/ardi/.bin/brightness -50 | xargs notif
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
-bindsym $mod+shift+Return exec /usr/local/bin/kitty
-bindsym $mod+Return exec /usr/local/bin/alacritty
+# start a terminal controller
+# bindsym $mod+shift+Return exec "/usr/local/bin/alacritty --class=popup"
+
+# bindsym $mod+Return exec "/usr/local/bin/alacritty -e tmux"
+bindsym $mod+Return exec "~/.bin/tmuxinal"
+bindsym $mod+shift+Return exec "~/.bin/workspace.sh"
+# bindsym $mod+w exec "/home/ardi/.bin/kerja"
+
 for_window [instance="__scratchpad"] move scratchpad
 # exec --no-startup-id urxvt -name __scratchpad
 
+for_window [instance="terminal-controller"] move scratchpad
+for_window [instance="terminal-controller"] scratchpad show
+
 # custom run for pcmanfm
-for_window [instance="pcmanfm-scratchpad"] move scratchpad
-for_window [instance="pcmanfm-scratchpad"] scratchpad show
+for_window [instance="popup"] move scratchpad
+for_window [instance="popup"] scratchpad show
 
-for_window [instance="tpr"] move scratchpad
-for_window [instance="gist"] move scratchpad
+for_window [instance="my-notes"] move scratchpad
+for_window [instance="my-notes"] scratchpad show
 
-for_window [instance="joplin"] move scratchpad
-for_window [instance="joplin"] scratchpad show
+for_window [instance="edit-config"] move scratchpad
+for_window [instance="edit-config"] scratchpad show
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -100,15 +108,23 @@ bindsym $mod+Shift+q kill
 # bindsym $mod+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'Noto Sans 8'
 # bindsym $mod+d exec --no-startup-id "rofi -lines 12 -padding 18 -width 60 -location 0 -show combi -combi-modi window,drun,run -modi combi -columns 3 -font 'Noto Sans 8' -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s \\"'"
 bindsym $mod+d exec  "rofi -lines 12 -padding 18 -width 60 -location 0 -show combi -combi-modi window,drun,run -modi combi -columns 3 -font 'Noto Sans 8' -run--command 'zsh -i -c \\"{cmd}\\"'"
-bindsym $mod+c exec --no-startup-id "rofi -show calc -modi calc -no-show-match -no-sort > /dev/null"
-bindsym $mod+w exec  "rofi -show window -run window"
+bindsym $mod+c exec --no-startup-id "rofi -modi 'clipboard:greenclip print' -show clipboard"
+# bindsym $mod+w exec  "rofi -show window -run window"
 bindsym $mod+space exec  "rofi -show window -run window"
 
 # bindsym $mod+space exec "rofi -lines 7 -padding 18 -width 60 -location 0 -show combi -combi-modi window,drun,run -modi combi -columns 3 -font 'Noto Sans 8'"
 
-bindsym F8 scratchpad show
-
 # bindsym F9 exec "/usr/bin/xsel --clipboard | tee /tmp/cliptrans | ~/.bin/cliptrans en:id"
+bindsym F1 scratchpad show
+bindsym F12 exec "~/.bin/terminal-controller.sh"
+bindsym Shift+F12 exec "~/.bin/edit-config.sh"
+bindsym F2 exec "~/.bin/my-notes.sh"
+
+# bindsym F2 scratchpad show
+# bindsym F3 exec "/usr/local/bin/alacritty --class popup -e ~/.bin/cheat.sh"
+bindsym F3 exec "~/.bin/browse.sh clipboard"
+bindsym $mod+F3 exec "~/.bin/browse.sh"
+bindsym $mod+s exec "~/.bin/browse_history_rofi.sh"
 bindsym F9 exec "/usr/bin/bash ~/.bin/cliptrans en:id"
 bindsym ctrl+F9 exec "/usr/bin/bash ~/.bin/cliptrans id:en"
 bindsym $mod+F9 exec "/usr/bin/bash ~/.bin/cliptrans speak"
@@ -116,8 +132,13 @@ bindsym Print exec "~/.bin/scroot"
 bindsym $mod+Print exec "~/.bin/scroot edit"
 bindsym $mod+ctrl+b exec "~/.bin/hef"
 bindsym $mod+m exec "~/.bin/wplay"
+bindsym $mod+Ctrl+m exec "~/.bin/wplay stop"
 bindsym ctrl+$alt+Delete exec "watson stop ;systemctl suspend"
-# bindsym F1 exec ~/.bin/tpr
+
+# bindsym $mod+w exec  "~/.bin/workspace.sh"
+
+# bindsym $mod+$alt+k exec "/usr/local/bin/alacritty -e zellij --layout kerb"
+# bindsym $mod+$alt+k exec "/usr/local/bin/alacritty -e zellij --layout kerb"
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -248,10 +269,12 @@ bindsym $mod+Shift+minus move scratchpad
 # focus the app
 bindsym $mod+Shift+s [title=Slack] focus
 bindsym $mod+Shift+w [title=WhatsApp] focus
+bindsym $mod+o exec "~/.bin/show-obsidian.sh"
+# bindsym $mod+o [instance=obsidian] focus
 # bindsym $mod+Shift+P [title=Postman] focus
 
 # Show the first scratchpad window
-bindsym $mod+minus scratchpad show
+# bindsym $mod+minus scratchpad show
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -264,7 +287,7 @@ bindsysm $mod+Ctrl+r [tiling workspace="__focused__"] move workspace "__reorder_
 
 bindsym $mod+Shift+m exec "~/.bin/mpvhistory"
 bindsym $mod+x exec "~/.bin/lock.sh"
-bindsym $mod+s exec "~/.bin/rofi-search 2>&1 | tee /tmp/wew.log"
+bindsym $mod+e exec "~/.bin/xwait.sh"
 bindsym $mod+p exec "/usr/bin/pcmanfm-qt --geometry 100x100x+50+50 --name pcmanfm-scratchpad"
 bindsym $mod+$alt+j exec "~/.bin/show-or-run Joplin /usr/local/bin/Joplin"
 
@@ -277,9 +300,11 @@ bindsym $mod+z exec "~/.bin/ropi rofi"
 # bindsym $mod+y exec "ytfzf -D"
 # bindsym $mod+Shift+y exec "ytfzf -D -m"
 
-# hide title bar
+#Hide window title bar
+default_border pixel 0
+default_floating_border pixel 1
 for_window [class="^.*"] border pixel 1
-default_border pixel 1
+for_window [class=".*"] title_format " %title "
 
 
 # resize window (you can also use the mouse for that)
