@@ -1,0 +1,15 @@
+#!/bin/sh
+remote="$1"
+url="$2"
+
+while read local_ref local_sha remote_ref remote_sha
+do
+    IFS=/
+    set $local_ref
+    BRANCH=$3
+    echo "- $BRANCH $ALLOW_MASTER_PUSH -"
+    if test "$BRANCH" = "master" -a  "x$ALLOW_MASTER_PUSH" = "x"  ; then
+        echo "not ALLOW_MASTER_PUSH"
+        exit 255
+    fi
+done
